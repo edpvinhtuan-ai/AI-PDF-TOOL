@@ -1,0 +1,6 @@
+{
+  "name": "PDF Tools - Nén, Cắt, Nối & Chuyển PDF sang Word",
+  "description": "Ứng dụng trực tuyến nén giảm dung lượng, cắt tách trang, ghép nối và chuyển đổi PDF sang Word (.docx), Excel (.xlsx) nhanh chóng, bảo mật ngay trên trình duyệt.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
