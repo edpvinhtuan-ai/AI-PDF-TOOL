@@ -9,6 +9,7 @@ import { Header } from './components/Header';
 import { CompressView } from './components/CompressView';
 import { SplitView } from './components/SplitView';
 import { MergeView } from './components/MergeView';
+import { EditPdfView } from './components/EditPdfView';
 import { PdfToWordView } from './components/PdfToWordView';
 import { PdfToExcelView } from './components/PdfToExcelView';
 import { PreviewModal } from './components/PreviewModal';
@@ -18,6 +19,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('merge');
   const [compressPdf, setCompressPdf] = useState<LoadedPdf | null>(null);
   const [splitPdf, setSplitPdf] = useState<LoadedPdf | null>(null);
+  const [editPdf, setEditPdf] = useState<LoadedPdf | null>(null);
   const [wordPdf, setWordPdf] = useState<LoadedPdf | null>(null);
   const [excelPdf, setExcelPdf] = useState<LoadedPdf | null>(null);
 
@@ -74,6 +76,14 @@ export default function App() {
 
         {activeTab === 'merge' && (
           <MergeView
+            onOpenPreview={handleOpenPreview}
+          />
+        )}
+
+        {activeTab === 'edit' && (
+          <EditPdfView
+            loadedPdf={editPdf}
+            onSetLoadedPdf={setEditPdf}
             onOpenPreview={handleOpenPreview}
           />
         )}

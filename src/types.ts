@@ -1,4 +1,36 @@
-export type ActiveTab = 'compress' | 'split' | 'merge' | 'to-word' | 'to-excel';
+export type ActiveTab = 'merge' | 'split' | 'compress' | 'edit' | 'to-word' | 'to-excel';
+
+export type PdfEditTool = 'select' | 'text' | 'whiteout' | 'draw' | 'highlight' | 'rect' | 'signature' | 'stamp';
+
+export interface PdfAnnotation {
+  id: string;
+  pageNumber: number; // 1-indexed original page number
+  type: 'text' | 'whiteout' | 'draw' | 'highlight' | 'rect' | 'image';
+  // Normalized coordinates (0 to 1) relative to currently displayed page box
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  // Text / Whiteout / Stamp properties
+  text?: string;
+  fontSize?: number; // in PDF pt (e.g. 14)
+  fontWeight?: 'normal' | 'bold';
+  color?: string; // hex e.g. '#111827'
+  backgroundColor?: string; // hex e.g. '#ffffff' or 'transparent'
+  borderColor?: string;
+  // Freehand / Highlight path points (normalized 0..1)
+  points?: { x: number; y: number }[];
+  strokeWidth?: number;
+  opacity?: number;
+  // Image / Signature dataUrl
+  imageDataUrl?: string;
+}
+
+export interface PageEditState {
+  originalPageNumber: number; // 1-indexed
+  rotation: number; // 0, 90, 180, 270 added rotation
+  deleted: boolean;
+}
 
 export type CompressionLevel = 'lossless' | 'recommended' | 'extreme';
 

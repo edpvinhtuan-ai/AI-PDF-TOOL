@@ -1,5 +1,5 @@
 import React from 'react';
-import { Minimize2, Scissors, Layers, ShieldCheck, FileType, FileSpreadsheet } from 'lucide-react';
+import { Minimize2, Scissors, Layers, ShieldCheck, FileType, FileSpreadsheet, PenTool } from 'lucide-react';
 import { ActiveTab } from '../types';
 
 interface HeaderProps {
@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
                   Bảo mật 100%
                 </span>
               </div>
-              <p className="text-xs text-stone-500">Ghép nối • Cắt tách • Nén dung lượng • Chuyển sang Word &amp; Excel</p>
+              <p className="text-xs text-stone-500">Ghép nối • Cắt tách • Nén dung lượng • Chỉnh sửa • Chuyển sang Word &amp; Excel</p>
             </div>
           </div>
 
@@ -78,6 +78,20 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
           >
             <Minimize2 className={`w-4 h-4 ${activeTab === 'compress' ? 'text-red-600' : 'text-stone-500'}`} />
             <span>Nén PDF</span>
+          </button>
+
+          <button
+            type="button"
+            id="tab-edit"
+            onClick={() => onTabChange('edit')}
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-sm font-medium transition-all shrink-0 ${
+              activeTab === 'edit'
+                ? 'bg-amber-50 text-amber-800 font-bold shadow-xs border border-amber-200'
+                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
+            }`}
+          >
+            <PenTool className={`w-4 h-4 ${activeTab === 'edit' ? 'text-amber-600' : 'text-stone-500'}`} />
+            <span>Chỉnh sửa PDF</span>
           </button>
 
           <button

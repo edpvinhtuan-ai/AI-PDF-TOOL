@@ -24,6 +24,7 @@ import {
   renderHighResPage,
   splitPdf,
 } from '../lib/pdfUtils';
+import { pdfjsLib } from '../lib/pdfWorker';
 import { DropZone } from './DropZone';
 
 interface SplitViewProps {
